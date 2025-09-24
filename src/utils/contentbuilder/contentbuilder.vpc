@@ -1,0 +1,82 @@
+//-----------------------------------------------------------------------------
+//	Contentbuilder.VPC
+//
+//	Project Script
+//-----------------------------------------------------------------------------
+
+$Macro SRCDIR		"..\.."
+$Macro OUTBINDIR	"$SRCDIR\..\game\bin"
+
+$Include "$SRCDIR\vpc_scripts\source_exe_con_base.vpc"
+
+$Configuration
+{
+	$Compiler
+	{
+		$AdditionalIncludeDirectories		"$BASE,..\common"
+
+		// Right now we dont have a complete implementation for MP_ADDON_SUPPORT, so we disable it.
+		$PreprocessorDefinitions			"$BASE;PROTECTED_THINGS_DISABLE" 
+
+	}
+
+	$Linker
+	{
+		$AdditionalDependencies				"$BASE ws2_32.lib odbc32.lib odbccp32.lib winmm.lib"
+		$EnableLargeAddresses				"Support Addresses Larger Than 2 Gigabytes (/LARGEADDRESSAWARE)" [$WIN32]
+	}
+}
+
+$Project "Content builder"
+{
+	$Folder	"Source Files"
+	{
+		-$File	"$SRCDIR\public\tier0\memoverride.cpp"
+
+		$File "corebuilder.cpp"
+		$File "contentbuilder.cpp"
+
+		$Folder	"Common Files"
+		{
+			$File	"..\common\cmdlib.cpp"
+			$File	"$SRCDIR\public\filesystem_helpers.cpp"
+			$File	"$SRCDIR\public\resourcecopy/cresourcecopy.cpp"
+			$File	"$SRCDIR\public\filesystem_init.cpp"
+			$File	"..\common\filesystem_tools.cpp"
+			$File	"..\common\scriplib.cpp"
+			$File	"..\common\tools_minidump.cpp"
+			$File	"$SRCDIR\public\loadcmdline.cpp"
+		}
+	}
+
+	$Folder	"Header Files"
+	{
+		$File "contentbuilder.hpp"
+		$File "assetbuilder_material.hpp"
+		$File "assetbuilder_model.hpp"
+		$File "assetbuilder_scene.hpp"
+		$File "assetbuilder_caption.hpp"
+		$File "assetbuilder_map.hpp"
+		$File "assetbuilder_vpk.hpp"
+		//$File "assetbuilder_addon.hpp"
+		$File "corebuilder.hpp"
+
+		$Folder	"Common header files"
+		{
+			$File	"..\common\consolelogger.hpp"
+			$File	"..\common\tools_minidump.h"
+			$File	"..\common\pipeline_shareddefs.h"
+			$File	"..\common\cmdlib.h"
+			$File	"$SRCDIR\public\resourcecopy/cresourcecopy.hpp"
+			$File	"$SRCDIR\public\filesystem_init.h"
+			$File	"..\common\filesystem_tools.h"
+			$File	"$SRCDIR\public\loadcmdline.h"
+			$File "../common/colorschemetools.h"
+		}
+	}
+
+	$Folder	"Link Libraries"
+	{
+		$Lib tier2
+	}
+}

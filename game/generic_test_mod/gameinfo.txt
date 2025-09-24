@@ -1,0 +1,23 @@
+"GameInfo"
+{
+	game 		"HALF-LIFE 2"
+	title 		"HALF-LIFE'"
+	type		singleplayer_only
+
+	FileSystem
+	{
+		SteamAppId				220		
+
+		SearchPaths
+		{
+			game 				|gameinfo_path|
+
+			game+game_write		|all_source_engine_paths|hl2
+
+			gamebin				|all_source_engine_paths|hl2/bin
+
+			game				"Y:\SteamLibrary\steamapps\common\Team Fortress 2\hl2"
+			game				"Y:\SteamLibrary\steamapps\common\Team Fortress 2\tf"
+		}
+	}
+}
