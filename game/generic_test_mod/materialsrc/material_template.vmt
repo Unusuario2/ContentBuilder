@@ -1,0 +1,39 @@
+LightmappedGeneric
+{
+	//---- Blend Mode ----
+	//---- Lighting ----
+	//---- Self Illum ----
+	//---- Translucent ----
+
+
+	//---- Color ----
+	$basetexture    ""
+
+	//---- Normal Map ----
+	$bumpmap        ""
+	$surfaceprop moss
+
+	$detail         ""
+	$detailblendmode 8
+	$detailscale 1
+	$detailblendfactor 0.15
+
+	//---- Texture Address Mode ----
+	$decal 1
+	$decalscale 0.25
+
+	//---- Lighting ----
+	$envmap "env_cubemap"
+	$envmapmask ""
+	$envmaptint "[0.04 0.04 0.04]"
+	$envmapcontrast 0.23
+	$envmapsaturation 0.03
+	$fresnelreflection 0.75
+	$envmaplightscale 1
+	$envmaplightscaleminmax "[0 0.35]"
+
+	//---- Fog ----
+
+	//---- Misc ----
+	%keywords "gm_rottenisland"
+}

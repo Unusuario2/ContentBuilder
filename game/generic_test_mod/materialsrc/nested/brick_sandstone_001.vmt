@@ -1,0 +1,24 @@
+LightmappedGeneric
+{
+	$basetexture "brick/brick_sandstone_001/brick_sandstone_001"
+	$bumpmap "brick/brick_sandstone_001/brick_sandstone_001_normal"
+	$surfaceprop brick
+
+	$reflectivity "[0.90 0.90 0.90]"
+
+	$detail "brick/brick_sandstone_001/brick_sandstone_001_ao"
+	$detailblendmode 8
+	$detailscale 1
+	$detailblendfactor 0.5
+
+	$envmap "env_cubemap"
+	$envmapmask "brick/brick_sandstone_001/brick_sandstone_001_roughness"
+	$envmaptint "[0.04 0.04 0.04]"
+	$envmapcontrast 0.23
+	$envmapsaturation 0.03
+	$fresnelreflection 0.75
+	$envmaplightscale 1
+	$envmaplightscaleminmax "[0 0.35]"
+
+	%keywords "gm_rottenisland"
+}

@@ -1,0 +1,61 @@
+ContentBuilder
+{
+    // Exclude files for asset compile, materials, models, maps, caption
+    Exclude
+    {
+        ExcludeFileOrFolder     "mapsrc\dev\"
+        ExcludeFileOrFolder     "mapsrc\prefab\"
+        ExcludeFileOrFolder     "mapsrc\instances\"  
+        ExcludeFileOrFolder     "modelsrc\template.qc"
+    }
+
+    MaterialBuilder 
+    {
+        BuildParams     "-nopause -deducepath -nop4"
+    }
+
+    ModelBuilder	
+    {
+        BuildParams     "-nop4"
+    }
+
+    SceneBuilder
+    {
+        BuildParams     ""
+    }
+
+    CaptionBuilder
+    {
+        BuildParams     "" 
+    }
+
+    MapBuilder	
+    {
+        BuildParams     ""
+    }
+
+    VpkBuilder
+    {
+        BuildParams "-M"
+
+        Exclude
+        {
+            // File Extensions
+            ExcludeFileOrFolder ".vcd" 
+            ExcludeFileOrFolder ".ptr" 
+            ExcludeFileOrFolder ".lin" 
+            ExcludeFileOrFolder ".vpk" 
+            
+            // Individual files
+            ExcludeFileOrFolder "gameinfo.txt" 
+            ExcludeFileOrFolder "contentbuilder_settings.txt" 
+            ExcludeFileOrFolder "_build" 
+            
+            // Folders
+            ExcludeFileOrFolder "mapsrc" 
+            ExcludeFileOrFolder "materialsrc" 
+            ExcludeFileOrFolder "modelsrc" 
+            ExcludeFileOrFolder "resource/closecaptionsrc" 
+        }
+    }
+}

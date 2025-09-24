@@ -1,0 +1,91 @@
+MapBuilderSystem
+{
+	// Name of the preset found inside the CompilePreset KeyValue
+	DefaultMapBuilderSettings "fast"
+	
+	// Inside this keyvalue you declare you all the preset 
+	CompilePresets
+    {
+		"Fast"
+		{
+			RunWorldBuilder 
+			{
+				BuildParams "-game %gamedir %source"
+			}
+
+			RunVisibilityBuilder 	
+			{
+				BuildParams "-fast -game %gamedir %source"
+			}
+
+			RunLightBuilder 		
+			{
+				BuildParams "-fast -fastambient -noextra -bounce 1 -game %gamedir %source"
+			}
+
+			RunTrasferFile
+			{
+				BuillParams "%source %mapdir"
+			}
+		}
+
+		"Standard"
+		{
+			RunWorldBuilder 
+			{
+				BuildParams "-game %gamedir %source"
+			}
+
+			RunVisibilityBuilder 	
+			{
+				BuildParams "-game %gamedir %source"
+			}
+
+			RunLightBuilder 		
+			{
+				BuildParams "-game %gamedir %source"
+			}
+
+			RunTrasferFile
+			{
+				BuildParams "%source %mapdir"
+			}
+		}
+
+		"Final"
+		{
+			RunWorldBuilder 
+			{
+				BuildParams "-game %gamedir %source"
+			}
+
+			RunVisibilityBuilder 	
+			{
+				BuildParams "-game %gamedir %source"
+			}
+
+			RunLightBuilder 		
+			{
+				BuildParams "-final -extrasky 64 -bounce 250 -game %gamedir %source"
+			}
+
+			RunMapInfo
+			{
+				BuildParams "-worldtexturestats -treeinfo %mapbsp"
+			}
+
+			RunTrasferFile
+			{
+				BuildParams "%source %mapdir"
+			}
+
+			RunCubemapBuilder 		
+			{
+				ToolName 	"tf.exe" // For RunCubemapBuilder this paramet always needs to be set by the user. 
+				BuildParams "-buildcubeamps map %filename"
+			}
+
+			// Custom process, put here whatever you want...
+		}
+	}
+}
