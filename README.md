@@ -2,7 +2,6 @@
 **ContentBuilder** is a flexible command-line utility designed to automate the **asset compilation pipeline** for Source Engine projects.  
 
 This makes **ContentBuilder** especially useful for:  
-- Modders who want to integrate **custom tools** directly into the compile chain.  
 - Teams or individuals who want to include **automated map builds in larger workflows** (e.g., continuous integration, automated testing, or packaging pipelines).  
 - Anyone seeking a **Source 2–style workflow** within Source 1.  
 
