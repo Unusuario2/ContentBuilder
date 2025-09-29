@@ -51,7 +51,7 @@
 //-----------------------------------------------------------------------------
 // Purpose:
 //-----------------------------------------------------------------------------
-class CModelBuilder : public CCoreBuilder
+class CModelBuilder final : public CCoreBuilder
 {
 public:
 	inline CModelBuilder();

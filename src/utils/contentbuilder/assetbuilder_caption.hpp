@@ -52,7 +52,7 @@
 //-----------------------------------------------------------------------------
 // Purpose:
 //-----------------------------------------------------------------------------
-class CCaptionBuilder : public CCoreBuilder
+class CCaptionBuilder final : public CCoreBuilder
 {
 public:
 	inline CCaptionBuilder();

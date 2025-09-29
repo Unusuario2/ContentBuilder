@@ -50,7 +50,7 @@
 //-----------------------------------------------------------------------------
 // Purpose:
 //-----------------------------------------------------------------------------
-class CMaterialBuilder : public CCoreBuilder
+class CMaterialBuilder final : public CCoreBuilder
 {
 private:
 	inline void CopySrcVmtToGameDir();

@@ -51,7 +51,7 @@
 //-----------------------------------------------------------------------------
 // Purpose:
 //-----------------------------------------------------------------------------
-class CSceneBuilder : public CCoreBuilder
+class CSceneBuilder final : public CCoreBuilder
 {
 private:
 	bool m_bRunAssetCompile = true;

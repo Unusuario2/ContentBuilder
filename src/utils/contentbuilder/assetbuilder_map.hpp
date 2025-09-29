@@ -55,7 +55,7 @@
 //-----------------------------------------------------------------------------
 // Purpose:
 //-----------------------------------------------------------------------------
-class CMapBuilder : public CCoreBuilder
+class CMapBuilder final : public CCoreBuilder
 {
 public:
 	inline CMapBuilder();

@@ -56,7 +56,7 @@
 //-----------------------------------------------------------------------------
 // Purpose:
 //-----------------------------------------------------------------------------
-class CVpkBuilder : public CCoreBuilder
+class CVpkBuilder final : public CCoreBuilder
 {
 private:
 	inline FileList CVpkBuilder::LoadAdditionalGameInfoKv();
