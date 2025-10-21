@@ -54,6 +54,7 @@ private:
 	bool			m_bForceBuildContent	= true;
 	bool			m_bPrintAppToTheConsole = false;
 
+
 protected:
 	float			m_flStartTime			= 0;
 	uint			m_uiCompletedProcess	= 0;
@@ -64,6 +65,7 @@ protected:
 	bool			m_bRunAssetCompile		= true;		// Do we run the builder?
 	bool			m_bDeleteCompiledAssets	= false;	
 	std::mutex		m_MsgMtxLock;
+
 
 public:
 	SpewMode		m_eSpewMode				= SpewMode::k_Normal;
@@ -77,6 +79,7 @@ public:
 	const char*		m_szGameDirToolsPath	= nullptr;	// (e.g: $SteamDir/Half-Life 2/bin)
 	const char*		m_szCompiledExtension	= nullptr;	// (e.g: .vtf)
 
+
 protected:
 	void StartExe(char* pFullCommand, const char* pFileName = nullptr);
 	void PrintHeaderCompileType();
@@ -86,16 +89,15 @@ protected:
 	FileList GenerateBuildingListAssets(const char* pForceExtension = nullptr);
 	FileListExtended GenerateFullBuildingList(FileList* pVListFiles = nullptr);
 
+
 public:
 	CCoreBuilder(const char* pKeyValue, const char* pFolderNameSrc, const char* pFolderNameDst, const bool bPrintAppToTheConsole, const bool bDeleteCompiledAssets, uint uiThreads, const char* pToolNames, FileList pExtensions, const char* pCompiledExtension);
 	CCoreBuilder(const char* pKeyValue, const bool bPrintAppToTheConsole, const bool bDeleteCompiledAssets, uint uiThreads, const char* pToolNames);
 	virtual ~CCoreBuilder();
 
 	void AssetToolCheck();
-
 	virtual void AssetBuilderCompile();
 	virtual void GenerateAssetReport();
-	
 	virtual void DeleteCompiledContents();
 };
 

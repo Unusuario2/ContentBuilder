@@ -106,7 +106,7 @@ inline void CSceneBuilder::AssetBuilderCompile()
 	CSceneBuilder::DeleteCompiledContents();
 
 	if (!g_pResourceCopy->CreateDir(CCoreBuilder::m_szGameAssetDstPath))
-		g_pConsoleLogger->Warning("AssetSystem%s -> Failed to creating folder at: %s", CCoreBuilder::m_szKeyValue, CCoreBuilder::m_szGameAssetDstPath);
+		g_pConsoleLogger->Warning("AssetSystem%s -> Failed to creating folder at: %s\n", CCoreBuilder::m_szKeyValue, CCoreBuilder::m_szGameAssetDstPath);
 
 	// Check if need to build any files
 	char szSceneCompiledFile[MAX_PATH];

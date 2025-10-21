@@ -60,14 +60,14 @@
 //-----------------------------------------------------------------------------
 // Purpose:
 //-----------------------------------------------------------------------------
-extern int  g_iThreads;
-extern bool g_bForceBuildContent;
-extern bool g_bContentDstDelete;
-extern char g_szGameBin[MAX_PATH];
-extern char g_szContentBuilderOutPath[MAX_PATH];
-extern char g_szGameInfoFile[MAX_PATH];
-extern char g_szSteamDir[MAX_PATH];
-extern char g_szContentBuilderScriptFile[MAX_PATH];
+extern int				g_iThreads;
+extern bool				g_bForceBuildContent;
+extern bool				g_bContentDstDelete;
+extern char				g_szGameBin[MAX_PATH];
+extern char				g_szContentBuilderOutPath[MAX_PATH];
+extern char				g_szGameInfoFile[MAX_PATH];
+extern char				g_szSteamDir[MAX_PATH];
+extern char				g_szContentBuilderScriptFile[MAX_PATH];
 extern CConsoleLogger*	g_pConsoleLogger;
 extern SpewMode			g_eSpewMode;
 extern CResourceCopy*	g_pResourceCopy;

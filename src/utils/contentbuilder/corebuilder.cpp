@@ -182,7 +182,7 @@ void CCoreBuilder::LoadGameInfoKv(char* pCommandLine)
     const float start = Plat_FloatTime();
     char szArgv[MAX_CMD_BUFFER_SIZE];
 
-    if (m_eSpewMode == SpewMode::k_Verbose) { Msg("AssetSystem%sVerbose -> Loading Keyvalues from: ", m_szKeyValue); ColorSpewMessage(SPEW_MESSAGE, &ColorPath, "%s", g_szContentBuilderScriptFile); Msg("...\n"); }
+    if (m_eSpewMode == SpewMode::k_Verbose) { Msg("\nAssetSystem%sVerbose -> Loading Keyvalues from: ", m_szKeyValue); ColorSpewMessage(SPEW_MESSAGE, &ColorPath, "%s", g_szContentBuilderScriptFile); Msg("...\n"); }
 
     KeyValues* pContentBuilderRead = new KeyValues("");
 
@@ -283,7 +283,7 @@ FileList CCoreBuilder::GenerateBuildingListAssets(const char* pForceExtension)
                 {
                     for (int i = 0; i < VFileList.size(); i++)
                     {
-                        if (V_strstr(&VFileList[i].data()[iGameDirlen + 1], pString))
+                        if (V_strstr(&VFileList.at(i).data()[iGameDirlen + 1], pString))
                         {
                             VFileList.erase(VFileList.begin() + i);
                             m_uiSkippedProcess++;
@@ -309,7 +309,7 @@ FileList CCoreBuilder::GenerateBuildingListAssets(const char* pForceExtension)
                 char szDstFile[MAX_PATH];
                 {
                     char szRelativeFile[MAX_PATH];
-                    V_strcpy_safe(szRelativeFile, &VFileList[i].data()[iStrlenSrc]);
+                    V_strcpy_safe(szRelativeFile, &VFileList.at(i).data()[iStrlenSrc]);
                     *(V_strrchr(szRelativeFile, '.')) = '\0';
                     V_sprintf_safe(szDstFile, "%s\\%s%s", m_szGameAssetDstPath, szRelativeFile, m_szCompiledExtension);
                 }
@@ -485,10 +485,10 @@ const char* CCoreBuilder::TimeStamp()
 
     if (deltaTime < 0) deltaTime = 0;
 
-    std::size_t totalSecs = static_cast<std::size_t>(deltaTime);
-    std::size_t hours = totalSecs / 3600;
-    std::size_t mins = (totalSecs % 3600) / 60;
-    std::size_t secs = totalSecs % 60;
+    const std::size_t totalSecs = static_cast<std::size_t>(deltaTime);
+    const std::size_t hours = totalSecs / 3600;
+    const std::size_t mins = (totalSecs % 3600) / 60;
+    const std::size_t secs = totalSecs % 60;
 
     static char s_szTime[128];
     V_sprintf_safe(s_szTime, "%02lluh:%02llum:%02llus", static_cast<unsigned long long>(hours), static_cast<unsigned long long>(mins), static_cast<unsigned long long>(secs));
@@ -511,11 +511,11 @@ void CCoreBuilder::AssetBuilderCompile()
         V_sprintf_safe(szGameDstPath, "%s\\%s", m_szGameDirPath, m_szFolderDst);
         if (!g_pResourceCopy->CreateDir(szGameDstPath))
         {
-            g_pConsoleLogger->Warning("AssetSystem%s -> Failed to creating folder at: %s", m_szKeyValue, szGameDstPath);
+            g_pConsoleLogger->Warning("AssetSystem%s -> Failed to creating folder at: %s\n", m_szKeyValue, szGameDstPath);
         }
         else if (m_eSpewMode == SpewMode::k_Verbose)
         {
-            Msg("AssetSystem%s -> Creating folder at: ", m_szKeyValue); ColorSpewMessage(SPEW_MESSAGE, &ColorPath, "%s", szGameDstPath);
+            Msg("AssetSystem%s -> Creating folder at: ", m_szKeyValue); ColorSpewMessage(SPEW_MESSAGE, &ColorPath, "%s\n", szGameDstPath);
         }
     }
 
@@ -533,14 +533,14 @@ void CCoreBuilder::AssetBuilderCompile()
             [this, &i, VCommandsToExec]() -> void
             {
                 // TODO, change this!! this is so fucking retared! All becouse of stupid win32 API
-                char* pTemp = V_strdup(VCommandsToExec[i].data());
+                char* pTemp = V_strdup(VCommandsToExec.at(i).data());
                 StartExe(pTemp,
                     [this, i]() -> const char*
                     {
                         if (m_bPrintAppToTheConsole)
                             return nullptr;
                         else
-                            return (*m_pVAssetCompileList)[i].data();
+                            return m_pVAssetCompileList->at(i).data();
                     }()
                         );
                 delete[] pTemp;
@@ -597,7 +597,7 @@ void CCoreBuilder::GenerateAssetReport()
 //-----------------------------------------------------------------------------
 void CCoreBuilder::DeleteCompiledContents()
 {
-    if (m_bDeleteCompiledAssets)
+    if (!m_bDeleteCompiledAssets)
         return;
 
     Msg("AssetSystem%s -> Deleting compiled files\n", m_szKeyValue);

@@ -187,7 +187,7 @@ inline void CVpkBuilder::AssetBuilderCompile()
 		{
 			for (int j = 0; j < VFileList.size(); j++)
 			{
-				if (V_strstr(VFileList[j].data(), ExcludeString.data()))
+				if (V_strstr(VFileList.at(j).data(), ExcludeString.data()))
 				{
 					VFileList.erase(VFileList.begin() + j);
 					j--;
@@ -272,6 +272,7 @@ inline void CVpkBuilder::DeleteCompiledContents()
 {
 	// Do nothing...
 }
+
 
 #endif // ASSETBUILDER_VPK_HPP
 
