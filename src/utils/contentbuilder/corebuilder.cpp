@@ -530,7 +530,7 @@ void CCoreBuilder::AssetBuilderCompile()
     for (int i = 0; i < len; i++)
     {
         tasks.emplace_back(std::async(std::launch::async,
-            [this, &i, VCommandsToExec]() -> void
+            [this, i, VCommandsToExec]() -> void
             {
                 // TODO, change this!! this is so fucking retared! All becouse of stupid win32 API
                 char* pTemp = V_strdup(VCommandsToExec.at(i).data());
