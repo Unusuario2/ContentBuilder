@@ -86,6 +86,8 @@ CCoreBuilder::CCoreBuilder(const char* pKeyValue, const char* pFolderNameSrc,
         char szTemp2[MAX_PATH];
         V_sprintf_safe(szTemp2, "%s\\%s", m_szGameDirPath, m_szFolderDst);
         m_szGameAssetDstPath = V_strdup(szTemp2);
+        if (!g_pResourceCopy->CreateDir(m_szGameAssetDstPath))
+            Warning("AssetSystem%s -> Could not create dir at: %s\n", m_szKeyValue, m_szGameAssetDstPath);
     }
 }
 
